@@ -1,7 +1,7 @@
 #!/bin/bash
 ###
 ### Claude Feedback System - Installation Script
-### https://github.com/YOUR_USERNAME/claude-feedback-system
+### https://github.com/phj1120/claude-feedback-system
 ###
 
 set -e  # Exit on error
@@ -53,7 +53,7 @@ echo -e "${GREEN}✓ Directories created${NC}"
 echo ""
 
 # GitHub raw content base URL
-GITHUB_RAW_URL="https://raw.githubusercontent.com/YOUR_USERNAME/claude-feedback-system/main/hooks"
+GITHUB_RAW_URL="https://raw.githubusercontent.com/phj1120/claude-feedback-system/main/hooks"
 
 # Download files
 echo -e "${BLUE}⬇️  Downloading hook files...${NC}"
@@ -145,5 +145,5 @@ echo -e "      [5] ⭐⭐⭐⭐⭐ Excellent"
 echo -e "   3. Check your CSV file for conversation history"
 echo ""
 echo -e "${BLUE}🔗 For more information:${NC}"
-echo -e "   https://github.com/YOUR_USERNAME/claude-feedback-system"
+echo -e "   https://github.com/phj1120/claude-feedback-system"
 echo ""

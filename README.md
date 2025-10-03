@@ -18,14 +18,14 @@ A lightweight hook system for Claude Code that automatically logs all your promp
 ### One-Line Install (Recommended)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/claude-feedback-system/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/phj1120/claude-feedback-system/main/install.sh | bash
 ```
 
 ### Manual Installation
 
 1. **Download the repository:**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/claude-feedback-system.git
+   git clone https://github.com/phj1120/claude-feedback-system.git
    cd claude-feedback-system
    ```
 
@@ -69,6 +69,58 @@ curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/claude-feedback-syste
      }
    }
    ```
+
+### Project-Local Installation
+
+If you want to use this only for a specific project:
+
+1. **Navigate to your project:**
+   ```bash
+   cd your-project-directory
+   ```
+
+2. **Copy hook files:**
+   ```bash
+   mkdir -p .claude/hooks
+   mkdir -p .claude/logs
+   mkdir -p .claude/temp
+   cp /path/to/claude-feedback-system/hooks/* .claude/hooks/
+   chmod +x .claude/hooks/*
+   ```
+
+3. **Configure project settings:**
+
+   Add to `.claude/settings.json` (in your project root):
+   ```json
+   {
+     "hooks": {
+       "UserPromptSubmit": [
+         {
+           "matcher": "",
+           "hooks": [
+             {
+               "type": "command",
+               "command": "./.claude/hooks/user-prompt-submit"
+             }
+           ]
+         }
+       ],
+       "Stop": [
+         {
+           "matcher": "",
+           "hooks": [
+             {
+               "type": "command",
+               "command": "./.claude/hooks/stop"
+             }
+           ]
+         }
+       ]
+     }
+   }
+   ```
+
+> **Note:** Project-local hooks only work in that specific project. Logs will be saved to `.claude/logs/claude-conversations.csv` in your project directory.
 
 ## 📖 How to Use
 
@@ -129,6 +181,7 @@ This system uses Claude Code's [hook mechanism](https://docs.claude.com/en/docs/
 
 ## 🛠️ Files Structure
 
+### Global Installation
 ```
 ~/.claude/
 ├── hooks/
@@ -140,6 +193,21 @@ This system uses Claude Code's [hook mechanism](https://docs.claude.com/en/docs/
 │   └── claude-conversations.csv # Your conversation data
 └── temp/
     └── current-session.json     # Session tracking
+```
+
+### Project-Local Installation
+```
+your-project/
+└── .claude/
+    ├── hooks/
+    │   ├── csv-updater.py
+    │   ├── user-prompt-submit
+    │   ├── stop
+    │   └── stop-parse-transcript.py
+    ├── logs/
+    │   └── claude-conversations.csv
+    └── temp/
+        └── current-session.json
 ```
 
 ## 🔍 Example Data
@@ -181,9 +249,9 @@ MIT License - see [LICENSE](LICENSE) for details
 
 ## 📬 Support
 
-- 🐛 [Report a Bug](https://github.com/YOUR_USERNAME/claude-feedback-system/issues)
-- 💡 [Request a Feature](https://github.com/YOUR_USERNAME/claude-feedback-system/issues)
-- ⭐ [Star this repo](https://github.com/YOUR_USERNAME/claude-feedback-system) if you find it useful!
+- 🐛 [Report a Bug](https://github.com/phj1120/claude-feedback-system/issues)
+- 💡 [Request a Feature](https://github.com/phj1120/claude-feedback-system/issues)
+- ⭐ [Star this repo](https://github.com/phj1120/claude-feedback-system) if you find it useful!
 
 ---
 
